@@ -42,16 +42,10 @@ Construction II solves both problems using **Secret Redistribution**, which modi
 Normal Secret S ──► Shared using QTSS
 Covert Secret Ŝ ──► Embedded inside trap structure via permutation + Pauli masking
 
-sql
-Copy code
-
 Whenever a new participant joins:
 
 Old share of previous party (QECC encoded + traps + permutation + Pauli)
 └─ redistributed to new party via (p,p)-QTSS
-
-yaml
-Copy code
 
 Thus, every generation keeps:
 ✔ secrecy  
@@ -121,197 +115,12 @@ Thus, every generation keeps:
 
 ---
 
-## 🚀 How to Run
+🌱 Future Work
 
-```bash
-# clone repo
-git clone https://github.com/<username>/<repo>.git
-cd <repo>
+Improve fidelity using advanced QECC
 
-# install dependencies
-pip install qiskit qiskit-aer --quiet
-📌 Future Enhancements
-Support for multiple covert messages using independent trap permutations
+NISQ-hardware execution benchmarking
 
-Deployment on Qiskit / Cirq physical hardware simulator
+Hybrid computational + information-theoretic QAESS
 
-Performance and security benchmarking across network topologies
-
-🧑‍🤝‍🧑 Contributors
-Project developed by
-Pratibha Sikheriya & Sree Lakshmi
-as part of QAESS Minor Project 2025
-
-yaml
-Copy code
-
----
-
-### ✔ If you want, I can also export it directly as:
-📌 `README.md` file  
-📌 PDF version of README  
-📌 LaTeX format for research submission  
-📌 Poster / PPT for presentation
-
-Just reply with what you want:
-
-MD / PDF / PPT / LaTeX / All
-
-Copy code
-
-
-
-
-
-
-
-You said:
-only read me that i copy pasete in github readme 
-
-
-ChatGPT said:
-Understood 👍
-Below is the final clean README.md — no instructions, no extra notes — just copy-paste it directly into GitHub.
-
-md
-Copy code
-# 🧬 Quantum Anamorphic Evolving Dynamic-Threshold Secret-Sharing (QAESS-SR)  
-### ⚡ Construction II — Implemented with Secret Redistribution
-
-This repository contains an implementation of **Construction II** from the research paper:  
-📄 *“Construction of Quantum Anamorphic Evolving Dynamic-Threshold Secret-Sharing Schemes (QAESS)”*  
-with a focus on **secret redistribution**, ensuring **low time complexity**, **reduced share size**, and **practical real-world feasibility**.
-
----
-
-## 🔍 What is QAESS-SR?
-
-QAESS-SR is a **quantum secret-sharing scheme** that supports covert communication and evolving participation over time.
-
-| Property | Description |
-|---------|-------------|
-| **Evolving** | New parties can join without restarting the system |
-| **Dynamic-Threshold** | Threshold at time `t` is `k(t)` depending on number of parties |
-| **Anamorphic** | Covert secret hidden inside the normal secret, only recoverable with covert keys |
-| **Secret Redistribution** | Previous shares are redistributed to new parties → no recomputation |
-
-➡️ **In short:** A quantum secret is shared across a growing network, and a second *hidden* secret is embedded without being detectable — even under adversarial inspection.
-
----
-
-## 🌟 Why Construction II?
-
-Construction II is chosen over Construction I because:
-
-| Construction I Limitation | Fix in Construction II |
-|--------------------------|------------------------|
-| Very large share size | Share modified only once per party |
-| High dealer memory | No need to store all intermediate generations |
-| Low practicality | Highly feasible for real implementation |
-
-> “Using secret redistribution significantly reduces the dimension of a party — bounded by O(I) even after insertion of covert messages.”
-
----
-
-## 🧠 Intuition Behind the Scheme
-
-Normal Secret S ──► Shared among parties
-Covert Secret Ŝ ──► Embedded inside trap code (permutation + Pauli masking)
-
-sql
-Copy code
-
-Whenever a new participant joins:
-
-Old share (QECC encoded + traps + permutation + Pauli)
-└─ redistributed to new party via (p,p)-QTSS
-
-yaml
-Copy code
-
-This maintains:
-✔ secrecy  
-✔ covert capability  
-✔ minimal overhead  
-
----
-
-## ⚙️ System Workflow
-
-1️⃣ Generate composite (normal + covert) secret  
-2️⃣ Share to first generation using `(p,p)` QTSS  
-3️⃣ For each new participant: modify + redistribute old share  
-4️⃣ For reconstruction: **all current parties are required**  
-5️⃣ Covert secret needs keys `k1, k2, n2, n4`
-
-### The covert secret remains:
-- Undetectable  
-- Indistinguishable  
-- Plausibly deniable  
-
----
-
-## 🛠 Implementation Overview
-
-| Module | Purpose |
-|--------|---------|
-| `QECC.py` | Quantum error-correcting code encoder/decoder |
-| `TrapCode.py` | Inserts covert secret using trap structure |
-| `Redistribution.py` | Share modification + redistribution via `(p,p)` QTSS |
-| `Dealer.py` | Controls parties, generations, and thresholds |
-| `Reconstruction.py` | Recovers normal and covert secret |
-
----
-
-## ⏱ Time Complexity & Memory
-
-| Feature | Construction I | Construction II |
-|--------|----------------|----------------|
-| Share size | `O(I⁴ log I (log log I)²)` | `O(I)` ✔ |
-| Space required | Exponential | Linear ✔ |
-| Practical deployment | ❌ Poor | ✔ Excellent |
-
-➡️ Suitable for **Quantum Networks, Quantum Internet, and Post-Quantum IoT Security**.
-
----
-
-## 🔐 Reconstruction Modes
-
-| Mode | Output |
-|------|--------|
-| **Normal Mode** | Recovers only normal secret `S` |
-| **Anamorphic Mode** | Recovers `S` + covert secret `Ŝ` using `(k1, k2, n2, n4)` |
-| **Deniable Mode** | Recovers only `S`, hiding existence of `Ŝ` even under audit |
-
----
-
-## 🔐 Security Guarantees
-
-| Property | Achieved Through |
-|---------|------------------|
-| Privacy | QTSS + Semi-QTSS |
-| Covert secrecy | Trap code + permutation + Pauli masking |
-| Indistinguishability | Covert embedding does not increase qubit size |
-| Plausible deniability | Adversary cannot detect anamorphic keys |
-| Spy resistance | `(∞,∞)` → all current parties required for reconstruction |
-
----
-
-## 🚀 How to Run
-
-```bash
-git clone https://github.com/<username>/<repo>.git
-cd <repo>
-
-pip install qiskit qiskit-aer --quiet
-📌 Future Enhancements
-Multiple covert messages via separate trap permutations
-
-Support on Qiskit / Cirq hardware backends
-
-Performance benchmarking across network topologies
-
-🧑‍🤝‍🧑 Contributors
-Developed by: Pratibha Sikheriya & Sree Lakshmi
-as part of QAESS Minor Project 2025
-
+Trap-optimization for resource-efficient scaling
