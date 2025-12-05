@@ -1,4 +1,4 @@
-# 🧬 Quantum Anamorphic Evolving Dynamic-Threshold Secret-Sharing (QAESS-SR)  
+#  Quantum Anamorphic Evolving Dynamic-Threshold Secret-Sharing (QAESS-SR)  
 ### ⚡ Construction II — Implemented with Secret Redistribution
 
 This repository contains an implementation of **Construction II** from the research paper:  
