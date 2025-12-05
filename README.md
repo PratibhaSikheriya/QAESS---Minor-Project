@@ -97,7 +97,7 @@ Thus, every generation keeps:
 
 - Quantum states for each generation
 - Key shares (k1, k2, n2, n4)
-- SHA-512 commitments + nonces
+- SHA-512 commitments
 - Measurement distributions
 
 
