@@ -105,15 +105,15 @@ Thus, every generation keeps:
 
 ## 🌱 Future Work
 
-Improve fidelity using advanced QECC
-NISQ-hardware execution benchmarking
-Hybrid computational + information-theoretic QAESS
-Trap-optimization for resource-efficient scaling
+- Improve fidelity using advanced QECC
+- NISQ-hardware execution benchmarking
+- Hybrid computational + information-theoretic QAESS
+- Trap-optimization for resource-efficient scaling
 
 ---
 
 ## ✨ Contributors
-Name	Institute
-Pratibha Sikheriya	NIT Raipur
-Eluri Sreelakshmi	NIT Raipur
-Supervision — Dr. Rajesh Doriya	
+
+- Pratibha Sikheriya 
+- Eluri Sree Lakshmi
+- Supervision — Dr. Rajesh Doriya	
