@@ -77,73 +77,73 @@ Thus, every generation keeps:
 
 ## Deatiled
 
-Algorithm 6: Secret Distribution & Encoding
-Setup
+# Algorithm 6: Secret Distribution & Encoding
+- Setup
 
-Inputs: Normal secret S (8 bits), Covert secret Sc (6 bits)
-Keys: k1 (permutation), k2 (Pauli operations) in GF(2^13)
-Qubits: 23 total = 7 (Steane) + 8 (traps) + 6 (covert) + 2 (random Pauli)
+- Inputs: Normal secret S (8 bits), Covert secret Sc (6 bits)
+- Keys: k1 (permutation), k2 (Pauli operations) in GF(2^13)
+- Qubits: 23 total = 7 (Steane) + 8 (traps) + 6 (covert) + 2 (random Pauli)
 
-Core Steps
+# Core Steps
 
-Encode S[0] → Steane [[7,1,3]] QECC (qubits 0-6)
-Encode S[1:8] → Trap qubits n1,n2,n3,n4 (qubits 7-14)
-Encode Sc → Covert channel (qubits 15-20)
-Apply → Superposition, Entanglement, Permutation(k1), Pauli(k2)
-Share keys → GF(2^13) Shamir secret sharing
-Create commitments → SHA-512 for verification
+- Encode S[0] → Steane [[7,1,3]] QECC (qubits 0-6)
+- Encode S[1:8] → Trap qubits n1,n2,n3,n4 (qubits 7-14)
+- Encode Sc → Covert channel (qubits 15-20)
+- Apply → Superposition, Entanglement, Permutation(k1), Pauli(k2)
+- Share keys → GF(2^13) Shamir secret sharing
+- Create commitments → SHA-512 for verification
 
-Outputs
+# Outputs
 
-Quantum states for each generation
-Key shares (k1, k2, n2, n4)
-SHA-512 commitments + nonces
-Measurement distributions
-
-
-Algorithm 6.2: Verification Protocol
-Phase 0: Attack Detection
-
-PNS Attack: Check trap violation rates
-MITM Attack: Validate state integrity
-Trojan Attack: Detect dimensional anomalies
-Intercept-Resend: Measure basis correlation
-
-Procedure 2a: Dealer-Message Verification
-
-Apply P^(-1)_k2 (inverse Pauli)
-Apply σ^(-1)_k1 (inverse permutation)
-Discard trap qubits
-Decode Steane → Recover message
-Verify SHA-512 commitment
-
-Procedure 2b: Party-Key Verification
-
-Reconstruct k1, k2, n2, n4 from GF(2^13) shares
-Verify SHA-512 commitments for all keys
-Shannon entropy test (≥0.75 threshold)
+- Quantum states for each generation
+- Key shares (k1, k2, n2, n4)
+- SHA-512 commitments + nonces
+- Measurement distributions
 
 
-Algorithm 7: Secret Reconstruction
-Normal Secret (Algorithm 3)
+# Algorithm 6.2: Verification Protocol
+- Phase 0: Attack Detection
 
-Apply P^(-1)_k2 → Undo Pauli encryption
-Apply σ^(-1)_k1 → Undo permutation
-Discard traps → Keep encoded qubits
-Decode QECC → Measure with 1024 shots
-Calculate fidelity vs original
+- PNS Attack: Check trap violation rates
+- MITM Attack: Validate state integrity
+- Trojan Attack: Detect dimensional anomalies
+- Intercept-Resend: Measure basis correlation
 
-Covert Secret (Algorithm 4)
+# Procedure 2a: Dealer-Message Verification
 
-Extract trap structure: n2 zeros + n4 ones
-Reconstruct from permutation pattern
-Calculate fidelity vs original
+- Apply P^(-1)_k2 (inverse Pauli)
+- Apply σ^(-1)_k1 (inverse permutation)
+- Discard trap qubits
+- Decode Steane → Recover message
+- Verify SHA-512 commitment
 
-Fidelity Analysis
+ # Procedure 2b: Party-Key Verification
 
-Target: ≥70% for both secrets
-Metrics: Bit-matching fidelity, Hamming distance
-Visualization: Comparison graphs across input types
+- Reconstruct k1, k2, n2, n4 from GF(2^13) shares
+- Verify SHA-512 commitments for all keys
+- Shannon entropy test (≥0.75 threshold)
+
+
+# Algorithm 7: Secret Reconstruction
+- Normal Secret (Algorithm 3)
+
+- Apply P^(-1)_k2 → Undo Pauli encryption
+- Apply σ^(-1)_k1 → Undo permutation
+- Discard traps → Keep encoded qubits
+- Decode QECC → Measure with 1024 shots
+- Calculate fidelity vs original
+
+# Covert Secret (Algorithm 4)
+
+- Extract trap structure: n2 zeros + n4 ones
+- Reconstruct from permutation pattern
+- Calculate fidelity vs original
+
+# Fidelity Analysis
+
+- Target: ≥70% for both secrets
+- Metrics: Bit-matching fidelity, Hamming distance
+- Visualization: Comparison graphs across input types
 
 ### The covert secret remains:
 - 🔒 undetectable  
