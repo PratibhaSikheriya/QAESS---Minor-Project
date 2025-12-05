@@ -111,17 +111,8 @@ git clone https://github.com/<user>/<repo>.git
 cd <repo>
 
 # install required libraries
-pip install -r requirements.txt
-
-# run simulation
-python main.py
-
-
-Expected output in simulation mode:
-
-[+] Normal Secret reconstructed successfully.
-[+] Covert Secret reconstructed (anamorphic mode).
-[+] Indistinguishability maintained — no anomaly detected.
+!pip install qiskit qiskit-aer --quiet
+!pip install qiskit
 
 📌 Future Enhancements
 
