@@ -69,18 +69,6 @@ Thus, every generation keeps:
 
 ---
 
-## 🛠 Implementation Overview
-
-| Module | Responsibility |
-|--------|---------------|
-| `QECC.py` | Quantum error-correcting code encoder/decoder |
-| `TrapCode.py` | Embeds and verifies covert message inside trap structure |
-| `Redistribution.py` | (p,p) QTSS redistribution for new party arrival |
-| `Dealer.py` | Handles generations, share allocation & threshold evolution |
-| `Reconstruction.py` | Normal & covert secret recovery routines |
-
----
-
 ## ⏱ Time Complexity & Memory
 
 | Feature | Construction I | Construction II (This repo) |
@@ -115,12 +103,17 @@ Thus, every generation keeps:
 
 ---
 
-🌱 Future Work
+## 🌱 Future Work
 
 Improve fidelity using advanced QECC
-
 NISQ-hardware execution benchmarking
-
 Hybrid computational + information-theoretic QAESS
-
 Trap-optimization for resource-efficient scaling
+
+---
+
+## ✨ Contributors
+Name	Institute
+Pratibha Sikheriya	NIT Raipur
+Eluri Sreelakshmi	NIT Raipur
+Supervision — Dr. Rajesh Doriya	
